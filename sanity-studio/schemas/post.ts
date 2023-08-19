@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export default {
   title: 'Post',
   name: 'post',
@@ -24,7 +26,7 @@ export default {
           to: [{type: 'user'}],
         },
       ],
-      validation: (Rule) => Rule.unique(),
+      validation: (Rule: Rule) => Rule.unique(),
     },
     {
       title: 'Comments',
@@ -52,4 +54,20 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'comments.0.comment',
+      authorName: 'author.name',
+      authorUsername: 'author.username',
+      media: 'photo',
+    },
+    prepare(selection: {title: string; authorName: string; authorUsername: string; media: string}) {
+      const {title, authorName, authorUsername, media} = selection
+      return {
+        title,
+        subtitle: `by ${authorName} ${authorUsername}`,
+        media,
+      }
+    },
+  },
 }

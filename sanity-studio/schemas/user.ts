@@ -1,3 +1,5 @@
+import {Rule} from 'sanity'
+
 export default {
   title: 'User',
   name: 'user',
@@ -33,7 +35,7 @@ export default {
           to: [{type: 'user'}],
         },
       ],
-      validation: (Rule) => Rule.unique(),
+      validation: (Rule: Rule) => Rule.unique(),
     },
     {
       title: 'Followers',
@@ -45,7 +47,7 @@ export default {
           to: [{type: 'user'}],
         },
       ],
-      validation: (Rule) => Rule.unique(),
+      validation: (Rule: Rule) => Rule.unique(),
     },
     {
       title: 'Bookmarks',
@@ -57,7 +59,13 @@ export default {
           to: [{type: 'post'}],
         },
       ],
-      validation: (Rule) => Rule.unique(),
+      validation: (Rule: Rule) => Rule.unique(),
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'username',
+    },
+  },
 }
