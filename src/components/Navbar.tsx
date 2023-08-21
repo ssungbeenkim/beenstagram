@@ -14,17 +14,17 @@ const menu = [
   {
     href: '/',
     icon: <HomeIcon />,
-    clicedIcon: <HomeFillIcon />,
+    clickedIcon: <HomeFillIcon />,
   },
   {
     href: '/search',
     icon: <SearchIcon />,
-    clicedIcon: <SearchFillIcon />,
+    clickedIcon: <SearchFillIcon />,
   },
   {
     href: '/new',
     icon: <NewIcon />,
-    clicedIcon: <NewFillIcon />,
+    clickedIcon: <NewFillIcon />,
   },
 ];
 
@@ -41,7 +41,7 @@ export default function Navbar() {
           {menu.map((item) => (
             <li key={item.href}>
               <Link href={item.href}>
-                {pathname === item.href ? item.clicedIcon : item.icon}
+                {pathname === item.href ? item.clickedIcon : item.icon}
               </Link>
             </li>
           ))}
