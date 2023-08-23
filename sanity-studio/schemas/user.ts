@@ -22,7 +22,7 @@ export default {
     },
     {
       title: 'Image',
-      name: 'iamge',
+      name: 'image',
       type: 'string',
     },
     {
