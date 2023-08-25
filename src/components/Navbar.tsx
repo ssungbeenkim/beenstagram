@@ -10,7 +10,6 @@ import { usePathname } from 'next/navigation';
 import ColorButton from './ui/ColorButton';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Avatar from './ui/Avatar';
-import { link } from 'fs';
 
 const menu = [
   {
