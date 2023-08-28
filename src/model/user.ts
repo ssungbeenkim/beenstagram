@@ -8,7 +8,7 @@ export type User = {
 export type SimpleUser = Pick<User, 'username' | 'image'>;
 
 export type DetailUser = User & {
-  following: SimpleUserp[];
+  following: SimpleUser[];
   followers: SimpleUser[];
   bookmarks: string[];
 };
