@@ -2,7 +2,6 @@ import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import AuthContext from '@/context/AuthContext';
-import { SWRConfig } from 'swr/_internal';
 import SWRConfigContext from '@/context/SWRConfigContext';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
@@ -28,6 +27,7 @@ export default function RootLayout({
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
+        <div id='portal' />
       </body>
     </html>
   );

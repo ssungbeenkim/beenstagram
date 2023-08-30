@@ -1,9 +1,16 @@
+'use client';
+
 import { SimplePost } from '@/model/post';
 import Image from 'next/image';
+import { useState } from 'react';
 import ActionBar from './ActionBar';
 import CommentForm from './CommentForm';
+import PostDetail from './PostDetail';
+import PostModal from './PostModal';
+import PostUserAvatar from './PostUserAvatar';
 
 import Avatar from './ui/Avatar';
+import MordalPortal from './ui/MordalPortal';
 
 type Props = {
   post: SimplePost;
@@ -11,12 +18,10 @@ type Props = {
 };
 export default function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, createdAt, likes, text } = post;
+  const [openModal, setOpenModal] = useState(false);
   return (
     <article className='border-200-gray rounded-lg border shadow-md'>
-      <div className='flex items-center p-2'>
-        <Avatar image={userImage} size='medium' highlight />
-        <span className='text-grey-900 ml-2 font-bold'>{username}</span>
-      </div>
+      <PostUserAvatar image={userImage} username={username} />
       <Image
         className='aspect-square w-full object-cover'
         src={image}
@@ -24,6 +29,7 @@ export default function PostListCard({ post, priority = false }: Props) {
         width={500}
         height={500}
         priority={priority}
+        onClick={() => setOpenModal(true)}
       />
       <ActionBar
         likes={likes}
@@ -32,6 +38,13 @@ export default function PostListCard({ post, priority = false }: Props) {
         text={text}
       />
       <CommentForm />
+      {openModal && (
+        <MordalPortal>
+          <PostModal onClose={() => setOpenModal(false)}>
+            <PostDetail post={post} />
+          </PostModal>
+        </MordalPortal>
+      )}
     </article>
   );
 }
