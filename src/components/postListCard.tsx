@@ -1,7 +1,7 @@
 import { SimplePost } from '@/model/post';
 import Image from 'next/image';
 import ActionBar from './ActionBar';
-import CommentForm from './commentForm';
+import CommentForm from './CommentForm';
 
 import Avatar from './ui/Avatar';
 
