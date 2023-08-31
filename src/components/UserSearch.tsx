@@ -1,4 +1,5 @@
 'use client';
+import useDebounce from '@/hooks/debounce';
 import { ProfileUser } from '@/model/user';
 import { FormEvent, useState } from 'react';
 import useSWR from 'swr';
@@ -7,11 +8,12 @@ import UserCard from './UserCard';
 
 export default function UserSearch() {
   const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebounce(keyword, 500);
   const {
     data: users,
     isLoading,
     error,
-  } = useSWR<ProfileUser[]>(`/api/search/${keyword}`);
+  } = useSWR<ProfileUser[]>(`/api/search/${debouncedKeyword}`);
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
