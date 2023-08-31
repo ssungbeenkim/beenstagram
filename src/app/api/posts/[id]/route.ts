@@ -7,7 +7,7 @@ type Context = {
   params: { id: string };
 };
 
-export async function GET(requese: NextRequest, context: Context) {
+export async function GET(_: NextRequest, context: Context) {
   const session = await getServerSession(authOptions);
   const user = session?.user;
 
