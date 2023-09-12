@@ -1,4 +1,4 @@
-type Porps = {
+type Props = {
   text: string;
   onClick: () => void;
   red?: boolean;
