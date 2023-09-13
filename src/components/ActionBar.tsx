@@ -7,7 +7,6 @@ import BookmarkFillIcon from './ui/icons/BookmarkFillIcon';
 import ToggleButton from './ui/ToggleButton';
 import { SimplePost } from '@/model/post';
 import { useSession } from 'next-auth/react';
-import { useSWRConfig } from 'swr';
 import usePost from '@/hooks/posts';
 
 type Props = {
