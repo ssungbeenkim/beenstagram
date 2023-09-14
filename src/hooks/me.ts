@@ -18,9 +18,8 @@ export default function useMe() {
       ...user,
       bookmarks: bookmark
         ? [...bookmarks, postId]
-        : bookmarks.filter((b) => b! == postId),
+        : bookmarks.filter((b) => b !== postId),
     };
-
     return mutate(updateBookmark(postId, bookmark), {
       optimisticData: newUser,
       populateCache: false,

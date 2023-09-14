@@ -1,4 +1,4 @@
-import { GetPost } from '@/service/post';
+import { getPost } from '@/service/post';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '../../auth/[...nextauth]/route';
@@ -14,6 +14,6 @@ export async function GET(_: NextRequest, context: Context) {
   if (!user) {
     return new Response('Authentication Error', { status: 401 });
   }
-  return GetPost(context.params.id) //
+  return getPost(context.params.id) //
     .then((data) => NextResponse.json(data));
 }
