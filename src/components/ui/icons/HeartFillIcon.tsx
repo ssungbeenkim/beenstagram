@@ -1,5 +1,5 @@
 import { AiFillHeart } from 'react-icons/ai';
 
-export default function HeartIcon() {
-  return <AiFillHeart className='h-7 w-7 fill-red-500' />;
+export default function HeartFillIcon() {
+  return <AiFillHeart className='w-7 h-7 fill-red-500' />;
 }

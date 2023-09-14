@@ -9,10 +9,10 @@ const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Binstagram',
-    template: 'Binstagram | %s',
+    default: 'Instantgram',
+    template: 'Instantgram | %s',
   },
-  description: 'Binstagram Photos',
+  description: 'Instantgram Photos',
 };
 
 export default function RootLayout({
@@ -22,14 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={openSans.className}>
-      <body className='w-full overflow-auto  bg-neutral-50'>
+      <body className='w-full bg-neutral-50 overflow-auto'>
         <AuthContext>
-          <header className='sticky top-0 z-10 border-b bg-white'>
-            <div className='mx-auto max-w-screen-xl'>
+          <header className='sticky top-0 bg-white z-10 border-b'>
+            <div className='max-w-screen-xl mx-auto'>
               <Navbar />
             </div>
           </header>
-          <main className='mx-auto flex w-full max-w-screen-xl justify-center'>
+          <main className='w-full flex justify-center max-w-screen-xl mx-auto'>
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>

@@ -1,13 +1,12 @@
-import { createPortal } from 'react-dom';
-
+import reactDom from 'react-dom';
 type Props = {
   children: React.ReactNode;
 };
-export default function MordalPortal({ children }: Props) {
+export default function ModalPortal({ children }: Props) {
   if (typeof window === 'undefined') {
     return null;
   }
 
   const node = document.getElementById('portal') as Element;
-  return createPortal(children, node);
+  return reactDom.createPortal(children, node);
 }

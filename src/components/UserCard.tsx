@@ -1,6 +1,6 @@
 import { SearchUser } from '@/model/user';
 import Link from 'next/link';
-import Avatar from './ui/Avatar';
+import Avatar from './Avatar';
 
 type Props = {
   user: SearchUser;
@@ -11,13 +11,11 @@ export default function UserCard({
   return (
     <Link
       href={`/user/${username}`}
-      className='mb-2 flex w-full items-center rounded-sm border border-neutral-300 bg-white p-4 hover:bg-neutral-50'
+      className='flex items-center w-full rounded-sm border border-neutral-300 mb-2 p-4 bg-white hover:bg-neutral-50 '
     >
-      <div className='mr-4'>
-        <Avatar image={image} />
-      </div>
+      <Avatar image={image} />
       <div className='text-neutral-500'>
-        <p className='font-bold leading-4 text-black'>{username}</p>
+        <p className='text-black font-bold leading-4'>{username}</p>
         <p>{name}</p>
         <p className='text-sm leading-4'>{`${followers} followers ${following} following`}</p>
       </div>

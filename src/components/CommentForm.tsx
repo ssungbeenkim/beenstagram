@@ -2,14 +2,14 @@ import SmileIcon from './ui/icons/SmileIcon';
 
 export default function CommentForm() {
   return (
-    <form className='flex items-center border-t border-neutral-300 px-3'>
+    <form className='flex items-center px-3 border-t border-neutral-300'>
       <SmileIcon />
       <input
-        className='ml-2 w-full border-none p-3 outline-none'
+        className='w-full ml-2 border-none outline-none p-3'
         type='text'
         placeholder='Add a comment...'
       />
-      <button className='font-bold text-sky-500'>Post</button>
+      <button className='font-bold text-sky-500 ml-2'>Post</button>
     </form>
   );
 }

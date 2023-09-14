@@ -1,7 +1,8 @@
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { dislikePost, likePost } from '@/service/posts';
 import { addBookmark, removeBookmark } from '@/service/user';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { authOptions } from '../auth/[...nextauth]/route';
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession(authOptions);

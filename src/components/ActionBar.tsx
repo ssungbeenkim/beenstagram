@@ -1,20 +1,22 @@
-import { parseDate } from '@/util/data';
 import BookmarkIcon from './ui/icons/BookmarkIcon';
 import HeartIcon from './ui/icons/HeartIcon';
+import { parseDate } from '@/util/date';
+import { useState } from 'react';
+import ToggleButton from './ui/ToggleButton';
 import HeartFillIcon from './ui/icons/HeartFillIcon';
 import BookmarkFillIcon from './ui/icons/BookmarkFillIcon';
-import ToggleButton from './ui/ToggleButton';
 import { SimplePost } from '@/model/post';
-import usePost from '@/hooks/posts';
+import { useSession } from 'next-auth/react';
+import { useSWRConfig } from 'swr';
+import usePosts from '@/hooks/posts';
 import useMe from '@/hooks/me';
-
 type Props = {
   post: SimplePost;
 };
 export default function ActionBar({ post }: Props) {
   const { id, likes, username, text, createdAt } = post;
   const { user, setBookmark } = useMe();
-  const { setLike } = usePost();
+  const { setLike } = usePosts();
 
   const liked = user ? likes.includes(user.username) : false;
   const bookmarked = user?.bookmarks.includes(id) ?? false;
@@ -26,9 +28,10 @@ export default function ActionBar({ post }: Props) {
   const handleBookmark = (bookmark: boolean) => {
     user && setBookmark(id, bookmark);
   };
+
   return (
     <>
-      <div className='my-2 flex justify-between px-3'>
+      <div className='flex justify-between my-2 px-4'>
         <ToggleButton
           toggled={liked}
           onToggle={handleLike}
@@ -43,16 +46,16 @@ export default function ActionBar({ post }: Props) {
         />
       </div>
       <div className='px-4 py-1'>
-        <p className='mb-2 text-sm font-bold'>{`${likes?.length ?? 0} ${
+        <p className='text-sm font-bold mb-2'>{`${likes?.length ?? 0} ${
           likes?.length > 1 ? 'likes' : 'like'
         }`}</p>
         {text && (
           <p>
-            <span className='mr-1 font-bold'>{username}</span>
+            <span className='font-bold mr-1'>{username}</span>
             {text}
           </p>
         )}
-        <p className='my-2 text-xs uppercase text-neutral-500'>
+        <p className='text-xs text-neutral-500 uppercase my-2'>
           {parseDate(createdAt)}
         </p>
       </div>

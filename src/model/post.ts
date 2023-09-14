@@ -1,4 +1,4 @@
-export type Comments = {
+export type Comment = {
   comment: string;
   username: string;
   image: string;
@@ -16,5 +16,5 @@ export type FullPost = {
   text: string;
   createdAt: string;
   likes: string[];
-  comments: Comments[];
+  comments: Comment[];
 };

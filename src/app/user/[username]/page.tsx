@@ -11,9 +11,11 @@ const getUser = cache(async (username: string) => getUserForProfile(username));
 
 export default async function UserPage({ params: { username } }: Props) {
   const user = await getUser(username);
+
   if (!user) {
     notFound();
   }
+
   return (
     <section className='w-full'>
       <UserProfile user={user} />
@@ -27,7 +29,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const user = await getUser(username);
   return {
-    title: `${user?.name} (@${user?.username}) · Binstagram Photos`,
-    description: `${user?.name}'s all Binstagram posts`,
+    title: `${user?.name} (@${user?.username}) · Instantgram Photos`,
+    description: `${user?.name}'s all Instantgram posts`,
   };
 }

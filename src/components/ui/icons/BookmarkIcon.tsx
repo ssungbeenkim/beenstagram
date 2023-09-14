@@ -4,5 +4,5 @@ type Props = {
   className?: string;
 };
 export default function BookmarkIcon({ className }: Props) {
-  return <RiBookmarkLine className={className || 'h-6 w-6'} />;
+  return <RiBookmarkLine className={className || 'w-6 h-6'} />;
 }

@@ -4,28 +4,29 @@ import { SimplePost } from '@/model/post';
 import Image from 'next/image';
 import { useState } from 'react';
 import ActionBar from './ActionBar';
+import Avatar from './Avatar';
 import CommentForm from './CommentForm';
 import PostDetail from './PostDetail';
 import PostModal from './PostModal';
 import PostUserAvatar from './PostUserAvatar';
-
-import Avatar from './ui/Avatar';
-import MordalPortal from './ui/MordalPortal';
+import ModalPortal from './ui/ModalPortal';
 
 type Props = {
   post: SimplePost;
   priority?: boolean;
 };
+
 export default function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, createdAt, likes, text } = post;
   const [openModal, setOpenModal] = useState(false);
+
   return (
-    <article className='border-200-gray rounded-lg border shadow-md'>
+    <article className='rounded-lg shadow-md border border-gray-200'>
       <PostUserAvatar image={userImage} username={username} />
       <Image
-        className='aspect-square w-full object-cover'
+        className='w-full object-cover aspect-square'
         src={image}
-        alt={`Photo by ${username}`}
+        alt={`photo by ${username}`}
         width={500}
         height={500}
         priority={priority}
@@ -34,11 +35,11 @@ export default function PostListCard({ post, priority = false }: Props) {
       <ActionBar post={post} />
       <CommentForm />
       {openModal && (
-        <MordalPortal>
+        <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
             <PostDetail post={post} />
           </PostModal>
-        </MordalPortal>
+        </ModalPortal>
       )}
     </article>
   );

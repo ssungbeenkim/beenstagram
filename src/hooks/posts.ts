@@ -8,13 +8,14 @@ async function updateLike(id: string, like: boolean) {
   }).then((res) => res.json());
 }
 
-export default function usePost() {
+export default function usePosts() {
   const {
     data: posts,
     isLoading,
     error,
     mutate,
   } = useSWR<SimplePost[]>('/api/posts');
+
   const setLike = (post: SimplePost, username: string, like: boolean) => {
     const newPost = {
       ...post,
@@ -23,6 +24,7 @@ export default function usePost() {
         : post.likes.filter((item) => item !== username),
     };
     const newPosts = posts?.map((p) => (p.id === post.id ? newPost : p));
+
     return mutate(updateLike(post.id, like), {
       optimisticData: newPosts,
       populateCache: false,
