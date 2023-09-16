@@ -10,7 +10,7 @@ type Props = {
   post: SimplePost;
 };
 export default function PostDetail({ post }: Props) {
-  const { id, userImage, username, image, createdAt, likes } = post;
+  const { id, userImage, username, image } = post;
   const { data } = userSWR<FullPost>(`/api/posts/${id}`);
   const comments = data?.comments;
 
