@@ -13,9 +13,10 @@ export default function PostDetail({ post }: Props) {
   const { id, userImage, username, image } = post;
   const { data } = userSWR<FullPost>(`/api/posts/${id}`);
   const comments = data?.comments;
+  const handlePostComment = (comment: string) => {};
 
   return (
-    <section className='flex w-full h-full'>
+    <section className='flex h-full w-full'>
       <div className='relative basis-3/5'>
         <Image
           className='object-cover'
@@ -26,20 +27,20 @@ export default function PostDetail({ post }: Props) {
           sizes='650px'
         />
       </div>
-      <div className='w-full basis-2/5 flex flex-col'>
+      <div className='flex w-full basis-2/5 flex-col'>
         <PostUserAvatar image={userImage} username={username} />
-        <ul className='border-t border-gray-200 h-full overflow-y-auto p-4 mb-1'>
+        <ul className='mb-1 h-full overflow-y-auto border-t border-gray-200 p-4'>
           {comments &&
             comments.map(
               ({ image, username: commentUsername, comment }, index) => (
-                <li key={index} className='flex items-center mb-1'>
+                <li key={index} className='mb-1 flex items-center'>
                   <Avatar
                     image={image}
                     size='small'
                     highlight={commentUsername === username}
                   />
                   <div className='ml-2'>
-                    <span className='font-bold mr-1'>{commentUsername}</span>
+                    <span className='mr-1 font-bold'>{commentUsername}</span>
                     <span>{comment}</span>
                   </div>
                 </li>
@@ -47,7 +48,7 @@ export default function PostDetail({ post }: Props) {
             )}
         </ul>
         <ActionBar post={post} />
-        <CommentForm />
+        <CommentForm onPostComment={handlePostComment} />
       </div>
     </section>
   );
