@@ -1,4 +1,5 @@
 'use client';
+import { CacheKeysContext } from '@/context/CacheKeysContext';
 import { ProfileUser } from '@/model/user';
 import { useState } from 'react';
 import PostGrid from './PostGrid';
@@ -11,8 +12,8 @@ type Props = {
 };
 const tabs = [
   { type: 'posts', icon: <PostIcon /> },
-  { type: 'saved', icon: <BookmarkIcon className='w-3 h-3' /> },
-  { type: 'liked', icon: <HeartIcon className='w-3 h-3' /> },
+  { type: 'saved', icon: <BookmarkIcon className='h-3 w-3' /> },
+  { type: 'liked', icon: <HeartIcon className='h-3 w-3' /> },
 ];
 export default function UserPosts({ user: { username } }: Props) {
   const [query, setQuery] = useState(tabs[0].type);
@@ -22,8 +23,8 @@ export default function UserPosts({ user: { username } }: Props) {
       <ul className='flex justify-center uppercase'>
         {tabs.map(({ type, icon }) => (
           <li
-            className={`mx-12 p-4 cursor-pointer border-black ${
-              type === query && 'font-bold border-t'
+            className={`mx-12 cursor-pointer border-black p-4 ${
+              type === query && 'border-t font-bold'
             }`}
             key={type}
             onClick={() => setQuery(type)}
@@ -33,7 +34,11 @@ export default function UserPosts({ user: { username } }: Props) {
           </li>
         ))}
       </ul>
-      <PostGrid username={username} query={query} />
+      <CacheKeysContext.Provider
+        value={{ postsKey: `/api/users/${username}/${query}` }}
+      >
+        <PostGrid/>
+      </CacheKeysContext.Provider>
     </section>
   );
 }

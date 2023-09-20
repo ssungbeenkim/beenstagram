@@ -18,7 +18,6 @@ export default function useFullPosts(postId: string) {
   } = useSWR<FullPost>(`/api/posts/${postId}`);
 
   const { mutate: globalMutate } = useSWRConfig();
-
   const postComment = useCallback(
     (comment: Comment) => {
       if (!post) return;
