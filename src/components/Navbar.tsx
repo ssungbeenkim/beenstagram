@@ -35,12 +35,12 @@ export default function Navbar() {
   const user = session?.user;
 
   return (
-    <div className='flex justify-between items-center px-6'>
+    <div className='flex items-center justify-between px-6'>
       <Link href='/'>
-        <h1 className='text-3xl font-bold'>Instantgram</h1>
+        <h1 className='text-3xl font-bold'>Beenstagram</h1>
       </Link>
       <nav>
-        <ul className='flex gap-4 items-center p-4'>
+        <ul className='flex items-center gap-4 p-4'>
           {menu.map((item) => (
             <li key={item.href}>
               <Link href={item.href}>
