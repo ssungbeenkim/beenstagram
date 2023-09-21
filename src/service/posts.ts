@@ -145,3 +145,12 @@ export async function createPost(userId: string, text: string, file: Blob) {
       );
     });
 }
+
+// export async function deletePost() {
+//   client
+//     .delete({
+//       query: '*[_type == "post" && author->username=="changerlemondeg"]',
+//     })
+//     .then(console.log)
+//     .catch(console.error);
+// }
