@@ -9,21 +9,20 @@ import UserCard from './UserCard';
 
 export default function UserSearch() {
   const [keyword, setKeyword] = useState('');
-  const debouncedKeyword = useDebounce(keyword);
+  const debouncedKeyword = useDebounce(keyword === '*' ? '' : keyword);
   const {
     data: users,
     isLoading,
     error,
   } = useSWR<SearchUser[]>(`/api/search/${debouncedKeyword}`);
-
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
   return (
-    <section className='w-full max-w-2xl my-4 flex flex-col items-center'>
-      <form className='w-full mb-4' onSubmit={onSubmit}>
+    <section className='my-4 flex w-full max-w-2xl flex-col items-center'>
+      <form className='mb-4 w-full' onSubmit={onSubmit}>
         <input
-          className='w-full text-xl p-3 outline-none border border-gray-400'
+          className='w-full border border-gray-400 p-3 text-xl outline-none'
           type='text'
           autoFocus
           placeholder='Search for a username or name'
