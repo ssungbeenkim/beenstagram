@@ -19,7 +19,7 @@ export default function SideBar({ user: { name, username, image } }: Props) {
         Language
       </p>
       <p className='font-bold text-sm mt-8 text-neutral-500'>
-        @Copyright INSTANTGRAM from METAL
+        @Copyright BEENSTAGRAM from METAL
       </p>
     </>
   );

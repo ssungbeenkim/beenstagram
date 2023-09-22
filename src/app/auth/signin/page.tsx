@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Signin',
-  description: 'Signup or Login to Instantgram',
+  description: 'Signup or Login to Beenstagram',
 };
 
 type Props = {
