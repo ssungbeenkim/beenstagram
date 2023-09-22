@@ -9,10 +9,10 @@ const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Instantgram',
-    template: 'Instantgram | %s',
+    default: 'beenstagram',
+    template: 'beenstagram | %s',
   },
-  description: 'Instantgram Photos',
+  description: 'beenstagram Photos',
 };
 
 export default function RootLayout({

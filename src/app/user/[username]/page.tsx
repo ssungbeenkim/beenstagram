@@ -29,7 +29,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const user = await getUser(username);
   return {
-    title: `${user?.name} (@${user?.username}) · Instantgram Photos`,
-    description: `${user?.name}'s all Instantgram posts`,
+    title: `${user?.name} (@${user?.username}) · Beenstagram Photos`,
+    description: `${user?.name}'s all Beennstagram posts`,
   };
 }
